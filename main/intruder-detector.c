@@ -4,10 +4,10 @@
 #include "freertos/idf_additions.h"
 #include "nvs_flash.h"
 
-// // Local includes
-// #define WIFI_SSID "Guest"
-// #define WIFI_PASSWORD ""
-// #include "wifi-driver.h"
+// Local includes
+#define WIFI_SSID "Guest"
+#define WIFI_PASSWORD ""
+#include "wifi-driver.h"
 
 void indicate_init(void) {
   gpio_num_t led_num = GPIO_NUM_8;
@@ -28,7 +28,7 @@ void app_main(void) {
   indicate_init();
 
   nvs_init();
-  // wifi_init();
+  wifi_init();
 
   while (1) {
     vTaskDelay(pdMS_TO_TICKS(200));

@@ -1,5 +1,6 @@
 idf_component_register(
     SRCS
+        "wifi-driver.c"
         "intruder-detector.c"
     INCLUDE_DIRS "."
     REQUIRES
