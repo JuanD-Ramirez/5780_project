@@ -1,0 +1,20 @@
+# https://clangd.llvm.org/config.html
+
+CompileFlags:
+  CompilationDatabase: build
+  Remove:
+    [-fno-shrink-wrap, -fstrict-volatile-bitfields, -fno-tree-switch-conversion]
+Index:
+  Background: Build
+  StandardLibrary: No
+Diagnostics:
+  UnusedIncludes: Strict
+Completion:
+  HeaderInsertion: IWYU
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+  Designators: Yes
+Hover:
+  ShowAKA: Yes
