@@ -1,12 +1,13 @@
 // External includes
 #include "driver/gpio.h"
 #include "esp_err.h"
+#include "esp_log.h"
 #include "freertos/idf_additions.h"
 #include "nvs_flash.h"
 
 // Local includes
-#define WIFI_SSID "Guest"
-#define WIFI_PASSWORD ""
+#define WIFI_SSID "main"
+#define WIFI_PASSWORD "kcuvzvorck"
 #include "wifi-driver.h"
 
 void indicate_init(void) {
@@ -29,6 +30,8 @@ void app_main(void) {
 
   nvs_init();
   wifi_init();
+
+  ESP_LOGI("main", "Done.");
 
   while (1) {
     vTaskDelay(pdMS_TO_TICKS(200));
