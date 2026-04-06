@@ -5,7 +5,9 @@
 #include "esp_netif.h"
 #include "esp_wifi.h"
 #include "freertos/idf_additions.h"
+#include <assert.h>
 #include <stdint.h>
+#include <string.h>
 
 // Local includes
 #include "wifi-driver.h"
@@ -17,7 +19,7 @@ static void handler_wifi_sta_start(void *, esp_event_base_t, int32_t, void *);
 static void handler_wifi_sta_disconnected(void *, esp_event_base_t, int32_t,
                                           void *);
 static void handler_ip_sta_got_ip(void *, esp_event_base_t, int32_t, void *);
-void wifi_init() {
+void wifi_init(const char *ssid, const char *pass) {
   event_group_wifi = xEventGroupCreate();
 
   ESP_ERROR_CHECK(esp_netif_init());
@@ -35,18 +37,21 @@ void wifi_init() {
   ESP_ERROR_CHECK(esp_event_handler_instance_register(
       IP_EVENT, IP_EVENT_STA_GOT_IP, &handler_ip_sta_got_ip, NULL, NULL));
   ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+
   wifi_config_t wifi_sta_config = {
       .sta = {
-          .ssid = WIFI_SSID,
-          .password = WIFI_PASSWORD,
+          .threshold.authmode = WIFI_AUTH_WPA_PSK,
+          .threshold.rssi = -80,
           // .channel = 1,
           // .bssid = {0xd6, 0x35, 0x1d, 0xbd, 0x30, 0xea},
           // .bssid_set = 1,
-          .threshold.authmode = WIFI_AUTH_WPA_PSK,
-          .threshold.rssi = -80,
           // .sae_pwe_h2e = WPA3_SAE_PWE_HUNT_AND_PECK,
           // .sae_h2e_identifier = "",
       }};
+  const size_t ssid_len = 32;
+  memcpy(wifi_sta_config.sta.ssid, ssid, ssid_len);
+  const size_t pass_len = 64;
+  memcpy(wifi_sta_config.sta.password, pass, pass_len);
   ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_sta_config));
   ESP_ERROR_CHECK(esp_wifi_start());
 

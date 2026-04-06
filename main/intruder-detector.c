@@ -6,8 +6,6 @@
 #include "nvs_flash.h"
 
 // Local includes
-#define WIFI_SSID "main"
-#define WIFI_PASSWORD "kcuvzvorck"
 #include "wifi-driver.h"
 
 void indicate_init(void) {
@@ -26,10 +24,12 @@ void indicate_init(void) {
 void nvs_init() { ESP_ERROR_CHECK(nvs_flash_init()); }
 
 void app_main(void) {
-  indicate_init();
+  // indicate_init();
 
+  const char *wifi_ssid = "main";
+  const char *wifi_password = "davekitchenbob";
   nvs_init();
-  wifi_init();
+  wifi_init(wifi_ssid, wifi_password);
 
   ESP_LOGI("main", "Done.");
 

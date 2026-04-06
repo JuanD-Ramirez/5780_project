@@ -1,6 +1,3 @@
 #pragma once
 
-#define WIFI_SSID "your-ssid-here"
-#define WIFI_PASSWORD "your-password-here"
-
-void wifi_init();
+void wifi_init(const char *ssid, const char *pass);
