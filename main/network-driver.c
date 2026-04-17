@@ -10,7 +10,7 @@
 #include <string.h>
 
 // Local includes
-#include "wifi-driver.h"
+#include "network-driver.h"
 
 #define WIFI_CONNECTED_BIT BIT0
 

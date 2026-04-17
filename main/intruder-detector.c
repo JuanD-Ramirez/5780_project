@@ -6,7 +6,7 @@
 #include "nvs_flash.h"
 
 // Local includes
-#include "wifi-driver.h"
+#include "network-driver.h"
 
 void indicate_init(void) {
   gpio_num_t led_num = GPIO_NUM_8;
