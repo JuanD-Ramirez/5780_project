@@ -1,3 +1,8 @@
+// Standard includes
+#include <assert.h>
+#include <stdint.h>
+#include <string.h>
+
 // External includes
 #include "esp_err.h"
 #include "esp_event.h"
@@ -5,12 +10,9 @@
 #include "esp_netif.h"
 #include "esp_wifi.h"
 #include "freertos/idf_additions.h"
-#include <assert.h>
-#include <stdint.h>
-#include <string.h>
 
 // Local includes
-#include "network-driver.h"
+#include "network.h"
 
 #define WIFI_CONNECTED_BIT BIT0
 
