@@ -6,6 +6,7 @@
 // External includes
 #include "esp_err.h"
 #include "esp_event.h"
+#include "esp_http_client.h"
 #include "esp_log.h"
 #include "esp_netif.h"
 #include "esp_wifi.h"
@@ -80,4 +81,34 @@ static void handler_ip_sta_got_ip(void *arg, esp_event_base_t event_base,
   ip_event_got_ip_t *event = (ip_event_got_ip_t *)event_data;
   ESP_LOGI("wifi", "Connected. IP: " IPSTR, IP2STR(&event->ip_info.ip));
   xEventGroupSetBits(event_group_wifi, WIFI_CONNECTED_BIT);
+}
+
+esp_err_t upload_image(uint8_t *data, size_t len, const char *url,
+                       const char *cert, const char *api_key) {
+  esp_http_client_config_t config = {
+      .url = url,
+      .method = HTTP_METHOD_POST,
+      .timeout_ms = 10000,
+      .cert_pem = cert,
+  };
+
+  esp_http_client_handle_t client = esp_http_client_init(&config);
+  if (!client) {
+    ESP_LOGE("http", "Failed to initialize the HTTP client.");
+    return ESP_FAIL;
+  }
+  esp_http_client_set_header(client, "Content-Type", "image/jpeg");
+  esp_http_client_set_header(client, "X-API-Key", api_key);
+  esp_http_client_set_post_field(client, (const char *)data, len);
+
+  esp_err_t err = esp_http_client_perform(client);
+  if (err == ESP_OK) {
+    ESP_LOGI("http", "Upload status: %d",
+             esp_http_client_get_status_code(client));
+  } else {
+    ESP_LOGI("http", "Upload failed: %s", esp_err_to_name(err));
+  }
+
+  esp_http_client_cleanup(client);
+  return err;
 }
