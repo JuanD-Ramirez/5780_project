@@ -15,3 +15,5 @@ dependencies:
   #   # All dependencies of `main` are public by default.
   #   public: true
   espressif/esp32-camera: '*'
+  ESP32_VL53L0X:
+    git: https://github.com/kerikun11/ESP32_VL53L0X

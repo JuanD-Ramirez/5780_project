@@ -1,8 +1,9 @@
 idf_component_register(
     SRCS
         "intruder_detector.c"
-        "network.c"
+        "ranging.c"
         "camera.c"
+        "network.c"
     INCLUDE_DIRS "."
     REQUIRES
         "esp_wifi"

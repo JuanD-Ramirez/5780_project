@@ -1,4 +1,12 @@
 dependencies:
+  ESP32_VL53L0X:
+    component_hash: dadd2b66c9aec8c7ecded62ad0569b596217b3e84048fe0514d07eef59fc5f5a
+    dependencies: []
+    source:
+      git: https://github.com/kerikun11/ESP32_VL53L0X
+      path: .
+      type: git
+    version: 20ba93f5f82caf43a40ba0703910d73f81414e8c
   espressif/esp32-camera:
     component_hash: 2b75f6f0c987fb0e3687ccbd464cd00c163ea8cb05d2470cfb05adf6535bc488
     dependencies:
@@ -28,8 +36,9 @@ dependencies:
       type: idf
     version: 6.0.0
 direct_dependencies:
+- ESP32_VL53L0X
 - espressif/esp32-camera
 - idf
-manifest_hash: bb2e04f03fc22fe03978f48d3f4f74ead5a698f8aba43ac46cd3353f373a000c
+manifest_hash: 15367d4d1e99eca20a8272b1703c3895a6187513f15d48b6d6718dc94b095704
 target: esp32
 version: 3.0.0
