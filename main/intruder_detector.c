@@ -10,12 +10,12 @@
 #include "network.h"
 #include "ranging.h"
 
-const char *wifi_ssid = "main";
-const char *wifi_password = "davekitchenbob";
-const char *url = "https://www.duranaero.com/upload";
+const char *wifi_ssid = "example-ssid";
+const char *wifi_password = "example-password";
+const char *url = "https://www.example.com/upload";
 const char *cert =
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIDhDCCAwugAwIBAgISBth2E/2vgcUL44KdyyBo0wAHMAoGCCqGSM49BAMDMDIx\n"
+    "exampleCAwugAwIBAgISBth2E/2vgcUL44KdyyBo0wAHMAoGCCqGSM49BAMDMDIx\n"
     "CzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQDEwJF\n"
     "ODAeFw0yNjAzMTUwNDU1MjJaFw0yNjA2MTMwNDU1MjFaMBwxGjAYBgNVBAMTEXd3\n"
     "dy5kdXJhbmFlcm8uY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEix49V3lE\n"
@@ -36,7 +36,7 @@ const char *cert =
     "LbjbdxDORZGmEGY33Jlrv+rLNoAZ5khruQa+siK23L/DRawIetosXA==\n"
     "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIEVjCCAj6gAwIBAgIQY5WTY8JOcIJxWRi/w9ftVjANBgkqhkiG9w0BAQsFADBP\n"
+    "exampleCAj6gAwIBAgIQY5WTY8JOcIJxWRi/w9ftVjANBgkqhkiG9w0BAQsFADBP\n"
     "MQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJuZXQgU2VjdXJpdHkgUmVzZWFy\n"
     "Y2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBYMTAeFw0yNDAzMTMwMDAwMDBa\n"
     "Fw0yNzAzMTIyMzU5NTlaMDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBF\n"

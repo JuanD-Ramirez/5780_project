@@ -6,8 +6,8 @@
 #include "ranging.h"
 
 #define I2C_PORT I2C_NUM_0
-#define SDA_PIN 14
-#define SCL_PIN 15
+#define SDA_PIN 1
+#define SCL_PIN 3
 
 static VL53L0X_Dev_t dev;
 
