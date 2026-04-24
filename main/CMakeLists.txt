@@ -6,8 +6,9 @@ idf_component_register(
         "network.c"
     INCLUDE_DIRS "."
     REQUIRES
-        "esp_wifi"
-        "esp_http_client"
-        "wpa_supplicant"
+        "esp_driver_gpio"
         "nvs_flash"
+        "esp_wifi"
+        "wpa_supplicant"
+        "esp_http_client"
 )
