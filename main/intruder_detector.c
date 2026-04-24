@@ -87,27 +87,11 @@ void app_main(void) {
 
   ESP_LOGI("main", "Ready.");
 
-  int32_t prev_range = -1;
-
   while (1) {
     vTaskDelay(pdMS_TO_TICKS(200));
 
-    int32_t range_mm = ranging_get_mm();
+    int32_t range_mm = ranging_wait_for_threshold();
     if (range_mm < 0) {
-      continue;
-    }
-
-    if (prev_range == -1) {
-      prev_range = range_mm;
-      continue;
-    }
-
-    int32_t diff = prev_range - range_mm;
-    if (diff < 0) {
-      diff = -diff;
-    }
-
-    if (diff < 100) {
       continue;
     }
 
@@ -119,7 +103,5 @@ void app_main(void) {
     }
     upload_image(image, image_size, url, cert, api_key);
     camera_free(image);
-
-    prev_range = range_mm;
   }
 }
