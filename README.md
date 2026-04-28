@@ -16,11 +16,15 @@ This project was originally developed as an intruder detection device, however, 
 
 ### Setup
 
-1. Follow wiring diagram:
+Wiring Diagram:
 <img width="1830" height="793" alt="Cammoduleschematic" src="https://github.com/user-attachments/assets/f9b76e29-b605-4b6c-a77d-5b69cf1a4969" />
-2. Change wifi SSID and password in WHATEVER THE FILE IS NAMED HERE
-3. Flash ESP-32-CAM module with repo
+1. Follow wiring diagram above.
+2. Change wifi SSID and password in main/intruder-detector.c
+3. Flash ESP-32-CAM module with repo.
 4. Ensure module is on by pressing the button. If there is a visible LED the module is on.
-5. INSTRUCTIONS FOR SSH TO SERVER FOR VIEWING PHOTOS 
+5. The camera module takes a photo and sends it to a server using a HTTP request.
+6. Route the request through a reverse proxy.
+7. The image must be saved on the server.
+8. View the image using a webpage provided by the server.
 
 
